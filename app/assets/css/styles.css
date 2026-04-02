@@ -1,0 +1,565 @@
+/* ============================================================
+   styles.css — Nuxt + @nuxtjs/color-mode
+   Le module color-mode ajoute .dark ou .light sur <html>.
+   On définit les variables dans chaque contexte.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. VARIABLES — Mode clair (défaut)
+   Appliquées quand <html class="light"> ou sans classe.
+   ------------------------------------------------------------ */
+:root {
+  /* Couleurs de fond */
+  --color-bg:          #ffffff;
+  --color-bg-soft:     #f4f4f5;
+  --color-bg-muted:    #e4e4e7;
+
+  /* Texte */
+  --color-text:        #18181b;
+  --color-text-soft:   #52525b;
+  --color-text-muted:  #a1a1aa;
+
+  /* Accent principal */
+  --color-primary:     #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  /* Bordures */
+  --color-border:      #d4d4d8;
+
+  /* Ombres */
+  --shadow-sm:         0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:         0 4px 12px rgba(0, 0, 0, 0.10);
+
+  /* Typographie */
+  --font-sans:         'Geist', 'Inter', system-ui, sans-serif;
+  --font-mono:         'Geist Mono', 'Fira Code', monospace;
+
+  /* Espacements */
+  --radius-sm:         4px;
+  --radius-md:         8px;
+  --radius-lg:         12px;
+
+  /* Transitions */
+  --transition:        150ms ease;
+}
+
+
+/* ------------------------------------------------------------
+   2. VARIABLES — Mode sombre
+   Le module color-mode pose .dark sur <html>.
+   ------------------------------------------------------------ */
+.dark {
+  --color-bg:          #09090b;
+  --color-bg-soft:     #18181b;
+  --color-bg-muted:    #27272a;
+
+  --color-text:        #fafafa;
+  --color-text-soft:   #a1a1aa;
+  --color-text-muted:  #52525b;
+
+  --color-primary:     #3b82f6;
+  --color-primary-hover: #60a5fa;
+
+  --color-border:      #3f3f46;
+
+  --shadow-sm:         0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:         0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ------------------------------------------------------------
+   3. RESET & BASE
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* Transition douce lors du changement de mode */
+  transition: background-color var(--transition), color var(--transition);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: 1.5rem;  /* marge gauche/droite — le texte ne colle plus aux bords */
+  padding-block: 1.5rem;   /* marge haut/bas */
+}
+
+
+/* ------------------------------------------------------------
+   4. TYPOGRAPHIE
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.375rem; }
+h4 { font-size: 1.125rem; }
+
+p {
+  color: var(--color-text-soft);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: 0.125rem 0.375rem;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+}
+
+
+/* ------------------------------------------------------------
+   5. COMPOSANTS UI
+   ------------------------------------------------------------ */
+
+/* --- Carte --- */
+.card {
+  background-color: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* --- Reset natif <button>
+   Un <button> sans classe a un style cohérent avec le thème.
+   La classe .btn surcharge et enrichit ce comportement.
+   ------------------------------------------------------------ */
+button {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+  padding: 0.5rem 1.25rem;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+button:hover {
+  background-color: var(--color-bg-muted);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* --- Boutons — base commune --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;        /* empêche le retour à la ligne */
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;           /* pas de sélection de texte au clic */
+  text-decoration: none;       /* utile quand .btn est sur un <a> */
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    opacity var(--transition);
+}
+
+/* État désactivé — s'applique à toutes les variantes */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variante : primaire */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-primary:active {
+  filter: brightness(0.92);
+}
+
+/* Variante : secondaire (fond doux, bordure visible) */
+.btn-secondary {
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-muted);
+  border-color: var(--color-text-muted);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-bg-muted);
+}
+
+/* Variante : ghost (transparent) */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-soft);
+  border-color: var(--color-border);
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+/* Variante : danger */
+.btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+/* Variante : lien (sans fond ni bordure) */
+.btn-link {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: transparent;
+  padding-inline: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-link:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Tailles */
+.btn-sm {
+  padding: 0.3125rem 0.875rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1.0625rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Pleine largeur */
+.btn-block {
+  width: 100%;
+}
+
+/* --- Champ de formulaire --- */
+.input {
+  width: 100%;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* --- Badge --- */
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background-color: var(--color-bg-muted);
+  color: var(--color-text-soft);
+  border: 1px solid var(--color-border);
+}
+
+/* --- Divider --- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5rem 0;
+}
+
+/* --- Toggle color-mode (bouton switch thème) --- */
+.color-mode-toggle {
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  color: var(--color-text-soft);
+  font-size: 0.875rem;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.color-mode-toggle:hover {
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
+}
+
+
+/* ------------------------------------------------------------
+   6. LAYOUT UTILITAIRES
+   ------------------------------------------------------------ */
+
+/* --- Conteneur principal --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* --- Flexbox --- */
+.flex             { display: flex; }
+.flex-col         { flex-direction: column; }
+.flex-wrap        { flex-wrap: wrap; }
+.items-start      { align-items: flex-start; }
+.items-center     { align-items: center; }
+.items-end        { align-items: flex-end; }
+.justify-start    { justify-content: flex-start; }
+.justify-center   { justify-content: center; }
+.justify-end      { justify-content: flex-end; }
+.justify-between  { justify-content: space-between; }
+
+/* --- Gap (espacement entre enfants flex/grid) --- */
+.gap-1  { gap: 0.25rem; }
+.gap-2  { gap: 0.5rem; }
+.gap-3  { gap: 0.75rem; }
+.gap-4  { gap: 1rem; }
+.gap-6  { gap: 1.5rem; }
+.gap-8  { gap: 2rem; }
+
+/* --- Margin — toutes directions ---
+   Échelle : 0=0  1=0.25rem  2=0.5rem  3=0.75rem  4=1rem
+             5=1.25rem  6=1.5rem  8=2rem  10=2.5rem  12=3rem
+             auto=auto
+*/
+
+/* margin (4 côtés) */
+.m-0   { margin: 0; }
+.m-1   { margin: 0.25rem; }
+.m-2   { margin: 0.5rem; }
+.m-3   { margin: 0.75rem; }
+.m-4   { margin: 1rem; }
+.m-6   { margin: 1.5rem; }
+.m-8   { margin: 2rem; }
+.m-auto { margin: auto; }
+
+/* margin-top */
+.mt-0   { margin-top: 0; }
+.mt-1   { margin-top: 0.25rem; }
+.mt-2   { margin-top: 0.5rem; }
+.mt-3   { margin-top: 0.75rem; }
+.mt-4   { margin-top: 1rem; }
+.mt-5   { margin-top: 1.25rem; }
+.mt-6   { margin-top: 1.5rem; }
+.mt-8   { margin-top: 2rem; }
+.mt-10  { margin-top: 2.5rem; }
+.mt-12  { margin-top: 3rem; }
+.mt-auto { margin-top: auto; }
+
+/* margin-bottom */
+.mb-0   { margin-bottom: 0; }
+.mb-1   { margin-bottom: 0.25rem; }
+.mb-2   { margin-bottom: 0.5rem; }
+.mb-3   { margin-bottom: 0.75rem; }
+.mb-4   { margin-bottom: 1rem; }
+.mb-5   { margin-bottom: 1.25rem; }
+.mb-6   { margin-bottom: 1.5rem; }
+.mb-8   { margin-bottom: 2rem; }
+.mb-10  { margin-bottom: 2.5rem; }
+.mb-12  { margin-bottom: 3rem; }
+.mb-auto { margin-bottom: auto; }
+
+/* margin-left */
+.ml-0   { margin-left: 0; }
+.ml-1   { margin-left: 0.25rem; }
+.ml-2   { margin-left: 0.5rem; }
+.ml-3   { margin-left: 0.75rem; }
+.ml-4   { margin-left: 1rem; }
+.ml-6   { margin-left: 1.5rem; }
+.ml-8   { margin-left: 2rem; }
+.ml-auto { margin-left: auto; }
+
+/* margin-right */
+.mr-0   { margin-right: 0; }
+.mr-1   { margin-right: 0.25rem; }
+.mr-2   { margin-right: 0.5rem; }
+.mr-3   { margin-right: 0.75rem; }
+.mr-4   { margin-right: 1rem; }
+.mr-6   { margin-right: 1.5rem; }
+.mr-8   { margin-right: 2rem; }
+.mr-auto { margin-right: auto; }
+
+/* margin horizontal (gauche + droite) */
+.mx-0    { margin-inline: 0; }
+.mx-1    { margin-inline: 0.25rem; }
+.mx-2    { margin-inline: 0.5rem; }
+.mx-4    { margin-inline: 1rem; }
+.mx-6    { margin-inline: 1.5rem; }
+.mx-8    { margin-inline: 2rem; }
+.mx-auto { margin-inline: auto; }
+
+/* margin vertical (haut + bas) */
+.my-0   { margin-block: 0; }
+.my-1   { margin-block: 0.25rem; }
+.my-2   { margin-block: 0.5rem; }
+.my-4   { margin-block: 1rem; }
+.my-6   { margin-block: 1.5rem; }
+.my-8   { margin-block: 2rem; }
+
+/* --- Padding — toutes directions --- */
+
+/* padding (4 côtés) */
+.p-0   { padding: 0; }
+.p-1   { padding: 0.25rem; }
+.p-2   { padding: 0.5rem; }
+.p-3   { padding: 0.75rem; }
+.p-4   { padding: 1rem; }
+.p-5   { padding: 1.25rem; }
+.p-6   { padding: 1.5rem; }
+.p-8   { padding: 2rem; }
+.p-10  { padding: 2.5rem; }
+.p-12  { padding: 3rem; }
+
+/* padding-top */
+.pt-0   { padding-top: 0; }
+.pt-1   { padding-top: 0.25rem; }
+.pt-2   { padding-top: 0.5rem; }
+.pt-4   { padding-top: 1rem; }
+.pt-6   { padding-top: 1.5rem; }
+.pt-8   { padding-top: 2rem; }
+
+/* padding-bottom */
+.pb-0   { padding-bottom: 0; }
+.pb-1   { padding-bottom: 0.25rem; }
+.pb-2   { padding-bottom: 0.5rem; }
+.pb-4   { padding-bottom: 1rem; }
+.pb-6   { padding-bottom: 1.5rem; }
+.pb-8   { padding-bottom: 2rem; }
+
+/* padding-left */
+.pl-0   { padding-left: 0; }
+.pl-2   { padding-left: 0.5rem; }
+.pl-4   { padding-left: 1rem; }
+.pl-6   { padding-left: 1.5rem; }
+
+/* padding-right */
+.pr-0   { padding-right: 0; }
+.pr-2   { padding-right: 0.5rem; }
+.pr-4   { padding-right: 1rem; }
+.pr-6   { padding-right: 1.5rem; }
+
+/* padding horizontal (gauche + droite) */
+.px-0   { padding-inline: 0; }
+.px-2   { padding-inline: 0.5rem; }
+.px-3   { padding-inline: 0.75rem; }
+.px-4   { padding-inline: 1rem; }
+.px-6   { padding-inline: 1.5rem; }
+.px-8   { padding-inline: 2rem; }
+
+/* padding vertical (haut + bas) */
+.py-0   { padding-block: 0; }
+.py-1   { padding-block: 0.25rem; }
+.py-2   { padding-block: 0.5rem; }
+.py-3   { padding-block: 0.75rem; }
+.py-4   { padding-block: 1rem; }
+.py-6   { padding-block: 1.5rem; }
+.py-8   { padding-block: 2rem; }
+
+
+/* ------------------------------------------------------------
+   7. ACCESSIBILITÉ
+   ------------------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Cacher visuellement mais garder pour les lecteurs d'écran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
