@@ -6,9 +6,9 @@
         <p class="tagline">Tableau de Bord</p>
       </div>
       <nav class="header-nav">
-        <a href="../siboulotSite/" class="nav-link">Accueil</a>
-        <a href="../siboulotSite/application/" class="nav-link">Application</a>
-        <a href="../siboulotSite/contact/" class="nav-link">Contact</a>
+        <a href="../" class="nav-link">Accueil</a>
+        <a href="../application/" class="nav-link">Application</a>
+        <a href="../contact/" class="nav-link">Contact</a>
       </nav>
       <button @click="$emit('toggle-theme')" class="theme-toggle">
         {{ isDark ? '☀️' : '🌙' }}
