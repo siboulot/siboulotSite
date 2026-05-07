@@ -3,34 +3,23 @@
     <div class="footer-container">
       <div class="footer-section">
         <h3>Siboulot</h3>
-        <p>Votre tableau de bord personnel pour rester productive.</p>
+        <p>Vive la météo avec siboulot.</p>
       </div>
       <div class="footer-section">
         <h4>Liens rapides</h4>
         <ul class="footer-links">
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">À propos</a></li>
+          <li><a href="../">Accueil</a></li>
           <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h4>Ressources</h4>
         <ul class="footer-links">
           <li><a href="#">Documentation</a></li>
-          <li><a href="#">FAQ</a></li>
           <li><a href="#">Support</a></li>
-          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="footer\privacyPolicy">Politique de confidentialité</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Me contacter</h4>
-        <p>
-          Email: <a href="mailto:contact@example.com">contact@example.com</a>
-        </p>
-        <p>
-          Tél: <a href="tel:+33612345678">+33 6 12 34 56 78</a>
-        </p>
       </div>
     </div>
     <div class="footer-bottom">

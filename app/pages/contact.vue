@@ -1,48 +1,22 @@
 <template>
     <div class="container py-8">
-        <!-- Titre et Date -->
+        
         <div class="mb-8">
-            <h1>Télécharger l'application</h1>
+            <h1>Contact</h1>
             <p class="text-soft">
-                Télécharger l'application pour android, linux, windows et mac
+                Pour nous contacter
             </p>
         </div>
 
         <div class="card mb-4">
-            <h2>Android Apk</h2>
-            <a href="app\download\tkt.txt" download>
-                  <button>Download</button>
-            </a>
-        </div>
-
-        <div class="card mb-4">
-            <h2>Linux</h2>
-            <a href="app\download\tkt.txt" download>
-                  <button>Download</button>
-            </a>
-        </div>
-
-        <div class="card mb-4">
-            <h2>Windows</h2>
-            <a href="app\download\tkt.txt" download>
-                  <button>Download</button>
-            </a>
-        </div>
-
-        <div class="card mb-4">
-            <h2>Mac</h2>
-            <a href="app\download\tkt.txt" download>
-                  <button>Download</button>
+            <h2>Via mail</h2>
+            <p>siboulot@outlook.fr</p>
+            <a href="mailto:siboulot@outlook.fr">
+                  <button>Lien</button>
             </a>
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-    layout: "default",
-});
-</script>
 
 <style scoped>
 .container {

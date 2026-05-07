@@ -23,5 +23,5 @@ export const weatherData = {
   humidity: 65,
   windSpeed: 12,
   uvIndex: 6,
-  location: 'Paris, France'
+  location: 'Obernai, France'
 }
